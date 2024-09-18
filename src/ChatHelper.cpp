@@ -118,66 +118,66 @@ ChatHelper::ChatHelper(PlayerbotAI* botAI) : PlayerbotAIAware(botAI)
     chats["whisper"] = CHAT_MSG_WHISPER;
     chats["w"] = CHAT_MSG_WHISPER;
 
-    classes[CLASS_DRUID] = "druid";
-    specs[CLASS_DRUID][0] = "balance";
-    specs[CLASS_DRUID][1] = "feral combat";
-    specs[CLASS_DRUID][2] = "restoration";
+    classes[CLASS_DRUID] = "德鲁伊";
+    specs[CLASS_DRUID][0] = "平衡";
+    specs[CLASS_DRUID][1] = "野性战斗";
+    specs[CLASS_DRUID][2] = "恢复";
 
-    classes[CLASS_HUNTER] = "hunter";
-    specs[CLASS_HUNTER][0] = "beast mastery";
-    specs[CLASS_HUNTER][1] = "marksmanship";
-    specs[CLASS_HUNTER][2] = "survival";
+    classes[CLASS_HUNTER] = "猎人";
+    specs[CLASS_HUNTER][0] = "野兽控制";
+    specs[CLASS_HUNTER][1] = "射击";
+    specs[CLASS_HUNTER][2] = "生存";
 
-    classes[CLASS_MAGE] = "mage";
-    specs[CLASS_MAGE][0] = "arcane";
-    specs[CLASS_MAGE][1] = "fire";
-    specs[CLASS_MAGE][2] = "frost";
+    classes[CLASS_MAGE] = "法师";
+    specs[CLASS_MAGE][0] = "奥术";
+    specs[CLASS_MAGE][1] = "火焰";
+    specs[CLASS_MAGE][2] = "冰霜";
 
-    classes[CLASS_PALADIN] = "paladin";
-    specs[CLASS_PALADIN][0] = "holy";
-    specs[CLASS_PALADIN][1] = "protection";
-    specs[CLASS_PALADIN][2] = "retribution";
+    classes[CLASS_PALADIN] = "圣骑士";
+    specs[CLASS_PALADIN][0] = "神圣";
+    specs[CLASS_PALADIN][1] = "防护";
+    specs[CLASS_PALADIN][2] = "惩戒";
 
-    classes[CLASS_PRIEST] = "priest";
-    specs[CLASS_PRIEST][0] = "discipline";
-    specs[CLASS_PRIEST][1] = "holy";
-    specs[CLASS_PRIEST][2] = "shadow";
+    classes[CLASS_PRIEST] = "牧师";
+    specs[CLASS_PRIEST][0] = "戒律";
+    specs[CLASS_PRIEST][1] = "神圣";
+    specs[CLASS_PRIEST][2] = "暗影";
 
-    classes[CLASS_ROGUE] = "rogue";
-    specs[CLASS_ROGUE][0] = "assasination";
-    specs[CLASS_ROGUE][1] = "combat";
-    specs[CLASS_ROGUE][2] = "subtlety";
+    classes[CLASS_ROGUE] = "盗贼";
+    specs[CLASS_ROGUE][0] = "刺杀";
+    specs[CLASS_ROGUE][1] = "战斗";
+    specs[CLASS_ROGUE][2] = "敏锐";
 
-    classes[CLASS_SHAMAN] = "shaman";
-    specs[CLASS_SHAMAN][0] = "elemental";
-    specs[CLASS_SHAMAN][1] = "enhancement";
-    specs[CLASS_SHAMAN][2] = "restoration";
+    classes[CLASS_SHAMAN] = "萨满";
+    specs[CLASS_SHAMAN][0] = "元素";
+    specs[CLASS_SHAMAN][1] = "增强";
+    specs[CLASS_SHAMAN][2] = "恢复";
 
-    classes[CLASS_WARLOCK] = "warlock";
-    specs[CLASS_WARLOCK][0] = "affliction";
-    specs[CLASS_WARLOCK][1] = "demonology";
-    specs[CLASS_WARLOCK][2] = "destruction";
+    classes[CLASS_WARLOCK] = "术士";
+    specs[CLASS_WARLOCK][0] = "痛苦";
+    specs[CLASS_WARLOCK][1] = "恶魔学识";
+    specs[CLASS_WARLOCK][2] = "毁灭";
 
-    classes[CLASS_WARRIOR] = "warrior";
-    specs[CLASS_WARRIOR][0] = "arms";
-    specs[CLASS_WARRIOR][1] = "fury";
-    specs[CLASS_WARRIOR][2] = "protection";
+    classes[CLASS_WARRIOR] = "战士";
+    specs[CLASS_WARRIOR][0] = "武器";
+    specs[CLASS_WARRIOR][1] = "狂暴";
+    specs[CLASS_WARRIOR][2] = "防护";
 
-    classes[CLASS_DEATH_KNIGHT] = "dk";
-    specs[CLASS_DEATH_KNIGHT][0] = "blood";
-    specs[CLASS_DEATH_KNIGHT][1] = "frost";
-    specs[CLASS_DEATH_KNIGHT][2] = "unholy";
+    classes[CLASS_DEATH_KNIGHT] = "死亡骑士";
+    specs[CLASS_DEATH_KNIGHT][0] = "鲜血";
+    specs[CLASS_DEATH_KNIGHT][1] = "冰霜";
+    specs[CLASS_DEATH_KNIGHT][2] = "邪恶";
 
-    races[RACE_DWARF] = "Dwarf";
-    races[RACE_GNOME] = "Gnome";
-    races[RACE_HUMAN] = "Human";
-    races[RACE_NIGHTELF] = "Night Elf";
-    races[RACE_ORC] = "Orc";
-    races[RACE_TAUREN] = "Tauren";
-    races[RACE_TROLL] = "Troll";
-    races[RACE_UNDEAD_PLAYER] = "Undead";
-    races[RACE_BLOODELF] = "Blood Elf";
-    races[RACE_DRAENEI] = "Draenei";
+    races[RACE_DWARF] = "矮人";
+    races[RACE_GNOME] = "侏儒";
+    races[RACE_HUMAN] = "人类";
+    races[RACE_NIGHTELF] = "暗夜精灵";
+    races[RACE_ORC] = "兽人";
+    races[RACE_TAUREN] = "牛头人";
+    races[RACE_TROLL] = "巨魔";
+    races[RACE_UNDEAD_PLAYER] = "亡灵";
+    races[RACE_BLOODELF] = "血精灵";
+    races[RACE_DRAENEI] = "德莱尼";
 }
 
 std::string const ChatHelper::formatMoney(uint32 copper)

@@ -151,46 +151,46 @@ void SuggestWhatToDoAction::grindReputation()
 {
     if (factions.empty())
     {
-        factions["Argent Dawn"] = 60;
-        factions["Bloodsail Buccaneers"] = 40;
-        factions["Brood of Nozdormu"] = 60;
-        factions["Cenarion Circle"] = 55;
-        factions["Darkmoon Faire"] = 20;
-        factions["Hydraxian Waterlords"] = 60;
-        factions["Ravenholdt"] = 20;
-        factions["Thorium Brotherhood"] = 40;
-        factions["Timbermaw Hold"] = 50;
-        factions["Wintersaber Trainers"] = 50;
-        factions["Booty Bay"] = 30;
-        factions["Everlook"] = 40;
-        factions["Gadgetzan"] = 50;
-        factions["Ratchet"] = 20;
+        factions["银色黎明"] = 60;
+        factions["血帆海盗"] = 40;
+        factions["诺兹多姆的子嗣"] = 60;
+        factions["塞纳里奥议会"] = 55;
+        factions["暗月马戏团"] = 20;
+        factions["海达希亚水元素"] = 60;
+        factions["拉文霍德"] = 20;
+        factions["瑟银兄弟会"] = 40;
+        factions["木喉要塞"] = 50;
+        factions["霜刃豹训练师"] = 50;
+        factions["藏宝海湾"] = 30;
+        factions["永望镇"] = 40;
+        factions["加基森"] = 50;
+        factions["棘齿城"] = 20;
 
-        factions["Ashtongue Deathsworn"] = 70;
-        factions["Cenarion Expedition"] = 62;
-        factions["The Consortium"] = 65;
-        factions["Honor Hold"] = 66;
-        factions["Keepers of Time"] = 68;
-        factions["Netherwing"] = 65;
-        factions["Ogri'la"] = 65;
-        factions["The Scale of the Sands"] = 65;
-        factions["Sporeggar"] = 65;
-        factions["Tranquillien"] = 10;
-        factions["The Violet Eye"] = 70;
+        factions["灰舌死誓者"] = 70;
+        factions["塞纳里奥远征队"] = 62;
+        factions["星界财团"] = 65;
+        factions["荣耀堡"] = 66;
+        factions["时光守护者"] = 68;
+        factions["虚空幼龙"] = 65;
+        factions["奥格瑞拉"] = 65;
+        factions["流沙之鳞"] = 65;
+        factions["孢子村"] = 65;
+        factions["幽暗城"] = 10;
+        factions["紫罗兰之眼"] = 70;
 
-        factions["Argent Crusade"] = 75;
-        factions["Ashen Verdict"] = 75;
-        factions["The Kalu'ak"] = 72;
-        factions["Kirin Tor"] = 75;
-        factions["Knights of the Ebon Blade"] = 77;
-        factions["The Sons of Hodir"] = 78;
-        factions["The Wyrmrest Accord"] = 77;
+        factions["银色十字军"] = 75;
+        factions["灰烬审判军"] = 75;
+        factions["卡鲁亚克"] = 72;
+        factions["肯瑞托"] = 75;
+        factions["黑锋骑士团"] = 77;
+        factions["霍迪尔之子"] = 78;
+        factions["龙眠联军"] = 77;
     }
 
     std::vector<std::string> levels;
-    levels.push_back("honored");
-    levels.push_back("revered");
-    levels.push_back("exalted");
+    levels.push_back("尊敬");
+    levels.push_back("崇敬");
+    levels.push_back("崇拜");
 
     std::vector<std::string> allowedFactions;
     for (auto it : factions)
