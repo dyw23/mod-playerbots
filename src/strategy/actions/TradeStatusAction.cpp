@@ -126,7 +126,7 @@ void TradeStatusAction::BeginTrade()
     ListItemsVisitor visitor;
     IterateItems(&visitor);
 
-    botAI->TellMaster("=== Inventory ===");
+    botAI->TellMaster("=== 个人物品清单 ===");
     TellItems(visitor.items, visitor.soulbound);
 
     if (sRandomPlayerbotMgr->IsRandomBot(bot))

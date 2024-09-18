@@ -23,7 +23,7 @@ bool TellItemCountAction::Execute(Event event)
         soulbound[proto->ItemId] = item->IsSoulBound();
     }
 
-    botAI->TellMaster("=== Inventory ===");
+    botAI->TellMaster("=== 个人物品清单 ===");
     for (std::map<uint32, uint32>::iterator i = itemMap.begin(); i != itemMap.end(); ++i)
     {
         ItemTemplate const* proto = sObjectMgr->GetItemTemplate(i->first);

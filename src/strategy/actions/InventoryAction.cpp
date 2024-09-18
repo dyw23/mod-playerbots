@@ -177,7 +177,7 @@ void InventoryAction::TellItem(ItemTemplate const* proto, uint32 count, bool sou
     std::ostringstream out;
     out << chat->FormatItem(proto, count);
     if (soulbound)
-        out << " (soulbound)";
+        out << " (灵魂绑定)";
 
     botAI->TellMaster(out.str());
 }

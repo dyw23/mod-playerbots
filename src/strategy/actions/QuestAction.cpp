@@ -201,18 +201,18 @@ bool QuestAction::AcceptQuest(Quest const* quest, ObjectGuid questGiver)
     uint32 questId = quest->GetQuestId();
 
     if (bot->GetQuestStatus(questId) == QUEST_STATUS_COMPLETE)
-        out << "Already completed";
+        out << "已经完成";
     else if (!bot->CanTakeQuest(quest, false))
     {
         if (!bot->SatisfyQuestStatus(quest, false))
-            out << "Already on";
+            out << "正在进行";
         else
-            out << "Can't take";
+            out << "不能接受";
     }
     else if (!bot->SatisfyQuestLog(false))
-        out << "Quest log is full";
+        out << "任务记录已满";
     else if (!bot->CanAddQuest(quest, false))
-        out << "Bags are full";
+        out << "背包已满";
     else
     {
         WorldPacket p(CMSG_QUESTGIVER_ACCEPT_QUEST);
@@ -231,11 +231,11 @@ bool QuestAction::AcceptQuest(Quest const* quest, ObjectGuid questGiver)
         if (bot->GetQuestStatus(questId) != QUEST_STATUS_NONE && bot->GetQuestStatus(questId) != QUEST_STATUS_REWARDED)
         {
             BroadcastHelper::BroadcastQuestAccepted(botAI, bot, quest);
-            out << "Accepted " << chat->FormatQuest(quest);
+            out << "已接受 " << chat->FormatQuest(quest);
             botAI->TellMaster(out);
             return true;
         }
-        out << "Cannot accept";
+        out << "不能接受";
     }
 
     out << " " << chat->FormatQuest(quest);
@@ -264,10 +264,10 @@ bool QuestUpdateCompleteAction::Execute(Event event)
 
         if (botAI->HasStrategy("debug quest", BotState::BOT_STATE_NON_COMBAT) || botAI->HasStrategy("debug rpg", BotState::BOT_STATE_COMBAT))
         {
-            LOG_INFO("playerbots", "{} => Quest [ {} ] completed", bot->GetName(), qInfo->GetTitle());
-            bot->Say("Quest [ " + format + " ] completed", LANG_UNIVERSAL);
+            LOG_INFO("playerbots", "{} => 任务 [ {} ] 已完成", bot->GetName(), qInfo->GetTitle());
+            bot->Say("任务 [ " + format + " ] 已完成", LANG_UNIVERSAL);
         }
-        botAI->TellMasterNoFacing("Quest completed " + format);
+        botAI->TellMasterNoFacing("任务已完成 " + format);
         BroadcastHelper::BroadcastQuestUpdateComplete(botAI, bot, qInfo);
     }
 

@@ -19,7 +19,7 @@ bool TalkToQuestGiverAction::ProcessQuest(Quest const* quest, Object* questGiver
 {
     bool isCompleted = false;
     std::ostringstream out;
-    out << "Quest ";
+    out << "任务 ";
 
     QuestStatus status = bot->GetQuestStatus(quest->GetQuestId());
     Player* master = GetMaster();
@@ -51,13 +51,13 @@ bool TalkToQuestGiverAction::ProcessQuest(Quest const* quest, Object* questGiver
         isCompleted |= TurnInQuest(quest, questGiver, out);
         break;
     case QUEST_STATUS_INCOMPLETE:
-        out << "|cffff0000Incompleted|r";
+        out << "|cffff0000未完成的|r";
         break;
     case QUEST_STATUS_NONE:
-        out << "|cff00ff00Available|r";
+        out << "|cff00ff00可用的|r";
         break;
     case QUEST_STATUS_FAILED:
-        out << "|cffff0000Failed|r";
+        out << "|cffff0000失败的|r";
         break;
     default:
         break;
@@ -91,8 +91,8 @@ bool TalkToQuestGiverAction::TurnInQuest(Quest const* quest, Object* questGiver,
     {
         const Quest* pQuest = sObjectMgr->GetQuestTemplate(questID);
         const std::string text_quest = ChatHelper::FormatQuest(pQuest);
-        LOG_INFO("playerbots", "{} => Quest [ {} ] completed", bot->GetName(), pQuest->GetTitle());
-        bot->Say("Quest [ " + text_quest + " ] completed", LANG_UNIVERSAL);
+        LOG_INFO("playerbots", "{} => 任务 [ {} ] 已完成", bot->GetName(), pQuest->GetTitle());
+        bot->Say("任务 [ " + text_quest + " ] 已完成", LANG_UNIVERSAL);
     }
 
     return true;
@@ -191,7 +191,7 @@ void TalkToQuestGiverAction::RewardMultipleItem(Quest const* quest, Object* ques
             }
             ItemTemplate const* item = sObjectMgr->GetItemTemplate(quest->RewardChoiceItemId[best]);
             bot->RewardQuest(quest, best, questGiver, true);
-            out << "Rewarded " << ChatHelper::FormatItem(item);
+            out << "获得奖励 " << ChatHelper::FormatItem(item);
         }
         else
         {
@@ -218,7 +218,7 @@ void TalkToQuestGiverAction::RewardMultipleItem(Quest const* quest, Object* ques
             ItemTemplate const* item = sObjectMgr->GetItemTemplate(quest->RewardChoiceItemId[*bestIds.begin()]);
             bot->RewardQuest(quest, *bestIds.begin(), questGiver, true);
 
-            out << "Rewarded " << ChatHelper::FormatItem(item);
+            out << "获得奖励 " << ChatHelper::FormatItem(item);
         }
     }
 }
@@ -226,7 +226,7 @@ void TalkToQuestGiverAction::RewardMultipleItem(Quest const* quest, Object* ques
 void TalkToQuestGiverAction::AskToSelectReward(Quest const* quest, std::ostringstream& out, bool forEquip)
 {
     std::ostringstream msg;
-    msg << "Choose reward: ";
+    msg << "选择奖励: ";
 
     for (uint8 i = 0; i < quest->GetRewChoiceItemsCount(); ++i)
     {
@@ -240,7 +240,7 @@ void TalkToQuestGiverAction::AskToSelectReward(Quest const* quest, std::ostrings
     }
 
     botAI->TellMaster(msg);
-    out << "Reward pending";
+    out << "奖励待定";
 }
 
 bool TurnInQueryQuestAction::Execute(Event event)
@@ -280,23 +280,23 @@ bool TurnInQueryQuestAction::Execute(Event event)
         }
     }
     std::ostringstream out;
-    out << "Quest ";
+    out << "任务 ";
     switch (status)
     {
     case QUEST_STATUS_COMPLETE:
         TurnInQuest(quest, object, out);
         break;
     case QUEST_STATUS_INCOMPLETE:
-        out << "|cffff0000Incompleted|r";
+        out << "|cffff0000未完成的|r";
         break;
     case QUEST_STATUS_NONE:
-        out << "|cff00ff00Available|r";
+        out << "|cff00ff00可用的|r";
         break;
     case QUEST_STATUS_FAILED:
-        out << "|cffff0000Failed|r";
+        out << "|cffff0000失败的|r";
         break;
     case QUEST_STATUS_REWARDED:
-        out << "|cffff0000Rewarded|r";
+        out << "|cffff0000得到奖励的|r";
         break;
     default:
         break;
