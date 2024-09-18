@@ -266,48 +266,48 @@ bool SuggestDungeonAction::Execute(Event event)
 
     if (instances.empty())
     {
-        instances["Ragefire Chasm"] = 15;
-        instances["Deadmines"] = 18;
-        instances["Wailing Caverns"] = 18;
-        instances["Shadowfang Keep"] = 25;
-        instances["Blackfathom Deeps"] = 20;
-        instances["Stockade"] = 20;
-        instances["Gnomeregan"] = 35;
-        instances["Razorfen Kraul"] = 35;
-        instances["Maraudon"] = 50;
-        instances["Scarlet Monestery"] = 40;
-        instances["Uldaman"] = 45;
-        instances["Dire Maul"] = 58;
-        instances["Scholomance"] = 59;
-        instances["Razorfen Downs"] = 40;
-        instances["Strathholme"] = 59;
-        instances["Zul'Farrak"] = 45;
-        instances["Blackrock Depths"] = 55;
-        instances["Temple of Atal'Hakkar"] = 55;
-        instances["Lower Blackrock Spire"] = 57;
+        instances["怒焰裂谷"] = 15;
+        instances["死亡矿井"] = 18;
+        instances["哀嚎洞穴"] = 18;
+        instances["影牙城堡"] = 25;
+        instances["黑暗深渊"] = 20;
+        instances["监狱"] = 20;
+        instances["诺莫瑞根"] = 35;
+        instances["剃刀沼泽"] = 35;
+        instances["玛拉顿"] = 50;
+        instances["血色修道院"] = 40;
+        instances["奥达曼"] = 45;
+        instances["厄运之槌"] = 58;
+        instances["通灵学院"] = 59;
+        instances["剃刀高地"] = 40;
+        instances["斯坦索姆"] = 59;
+        instances["祖尔法拉克"] = 45;
+        instances["黑石深渊"] = 55;
+        instances["阿塔哈卡神庙"] = 55;
+        instances["黑石塔下层"] = 57;
 
-        instances["Hellfire Citidel"] = 65;
-        instances["Coilfang Reservoir"] = 65;
-        instances["Auchindoun"] = 65;
-        instances["Cavens of Time"] = 68;
-        instances["Tempest Keep"] = 69;
-        instances["Magister's Terrace"] = 70;
+        instances["地狱火堡垒"] = 65;
+        instances["盘牙水库"] = 65;
+        instances["奥金顿"] = 65;
+        instances["时光之穴"] = 68;
+        instances["风暴要塞"] = 69;
+        instances["魔导师平台"] = 70;
 
-        instances["Utgarde Keep"] = 75;
-        instances["The Nexus"] = 75;
-        instances["Ahn'kahet: The Old Kingdom"] = 75;
-        instances["Azjol-Nerub"] = 75;
-        instances["Drak'Tharon Keep"] = 75;
-        instances["Violet Hold"] = 80;
-        instances["Gundrak"] = 77;
-        instances["Halls of Stone"] = 77;
-        instances["Halls of Lightning"] = 77;
-        instances["Oculus"] = 77;
-        instances["Utgarde Pinnacle"] = 77;
-        instances["Trial of the Champion"] = 80;
-        instances["Forge of Souls"] = 80;
-        instances["Pit of Saron"] = 80;
-        instances["Halls of Reflection"] = 80;
+        instances["乌特加德城堡"] = 75;
+        instances["纳克萨玛斯"] = 75;
+        instances["安卡赫特：古代王国"] = 75;
+        instances["艾卓-尼鲁布"] = 75;
+        instances["达克萨隆要塞"] = 75;
+        instances["紫罗兰监狱"] = 80;
+        instances["古达克"] = 77;
+        instances["岩石大厅"] = 77;
+        instances["闪电大厅"] = 77;
+        instances["魔环"] = 77;
+        instances["乌特加德之巅"] = 77;
+        instances["冠军的试炼"] = 80;
+        instances["灵魂熔炉"] = 80;
+        instances["萨隆矿坑"] = 80;
+        instances["映像大厅"] = 80;
     }
 
     std::vector<std::string> allowedInstances;

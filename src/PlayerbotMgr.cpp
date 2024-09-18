@@ -497,7 +497,7 @@ void PlayerbotHolder::OnBotLogin(Player* const bot)
     // set delay on login
     botAI->SetNextCheckDelay(urand(2000, 4000));
 
-    botAI->TellMaster("Hello!", PLAYERBOT_SECURITY_TALK);
+    botAI->TellMaster("你好!", PLAYERBOT_SECURITY_TALK);
 
     if (master && master->GetGroup() && !group)
     {

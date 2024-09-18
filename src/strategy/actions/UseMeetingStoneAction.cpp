@@ -91,13 +91,13 @@ bool SummonAction::Execute(Event event)
 
     if (SummonUsingGos(master, bot) || SummonUsingNpcs(master, bot))
     {
-        botAI->TellMasterNoFacing("Hello!");
+        botAI->TellMasterNoFacing("你好!");
         return true;
     }
 
     if (SummonUsingGos(bot, master) || SummonUsingNpcs(bot, master))
     {
-        botAI->TellMasterNoFacing("Welcome!");
+        botAI->TellMasterNoFacing("欢迎!");
         return true;
     }
 
