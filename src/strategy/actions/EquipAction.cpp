@@ -93,7 +93,7 @@ void EquipAction::EquipItem(Item* item)
     }
 
     std::ostringstream out;
-    out << "equipping " << chat->FormatItem(item->GetTemplate());
+    out << "正在装备 " << chat->FormatItem(item->GetTemplate());
     botAI->TellMaster(out);
 }
 

@@ -260,13 +260,13 @@ std::vector<std::pair<uint32, std::string>> ListSpellsAction::GetSpellList(std::
 
             out << " - ";
             if (SkillValue >= GrayLevel)
-                out << " |cff808080gray";
+                out << " |cff808080灰色";
             else if (SkillValue >= GreenLevel)
-                out << " |cff80be80green";
+                out << " |cff80be80绿色";
             else if (SkillValue >= YellowLevel)
-                out << " |cffffff00yellow";
+                out << " |cffffff00黄色";
             else
-                out << " |cffff8040orange";
+                out << " |cffff8040橙色";
 
             out << "|r";
         }
@@ -296,7 +296,7 @@ bool ListSpellsAction::Execute(Event event)
 
     std::vector<std::pair<uint32, std::string>> spells = GetSpellList(filter);
 
-    botAI->TellMaster("=== Spells ===");
+    botAI->TellMaster("=== 技能 ===");
 
     std::sort(spells.begin(), spells.end(), CompareSpells);
 

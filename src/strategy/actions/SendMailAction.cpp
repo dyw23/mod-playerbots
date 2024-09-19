@@ -83,16 +83,16 @@ bool SendMailAction::Execute(Event event)
         }
 
         std::ostringstream body;
-        body << "Hello, " << receiver->GetName() << ",\n";
+        body << "你好, " << receiver->GetName() << ",\n";
         body << "\n";
-        body << "Here is the money you asked for";
+        body << "这是你要求的钱";
         body << "\n";
-        body << "Thanks,\n";
+        body << "谢谢,\n";
         body << bot->GetName() << "\n";
 
         CharacterDatabaseTransaction trans = CharacterDatabase.BeginTransaction();
 
-        MailDraft draft("Money you asked for", body.str());
+        MailDraft draft("你要求的钱", body.str());
         draft.AddMoney(money);
         bot->SetMoney(bot->GetMoney() - money);
         draft.SendMailTo(trans, MailReceiver(receiver), MailSender(bot));
@@ -100,20 +100,20 @@ bool SendMailAction::Execute(Event event)
         CharacterDatabase.CommitTransaction(trans);
 
         std::ostringstream out;
-        out << "Sending mail to " << receiver->GetName();
+        out << "邮件发送至 " << receiver->GetName();
         botAI->TellMaster(out.str());
         return true;
     }
 
     std::ostringstream body;
-    body << "Hello, " << receiver->GetName() << ",\n";
+    body << "你好, " << receiver->GetName() << ",\n";
     body << "\n";
-    body << "Here are the item(s) you asked for";
+    body << "这是你要求的物品";
     body << "\n";
-    body << "Thanks,\n";
+    body << "谢谢,\n";
     body << bot->GetName() << "\n";
 
-    MailDraft draft("Item(s) you asked for", body.str());
+    MailDraft draft("你要求的物品", body.str());
     for (ItemIds::iterator i = ids.begin(); i != ids.end(); i++)
     {
         FindItemByIdVisitor visitor(*i);
@@ -125,7 +125,7 @@ bool SendMailAction::Execute(Event event)
             if (item->IsSoulBound() || item->IsConjuredConsumable())
             {
                 std::ostringstream out;
-                out << "Cannot send " << ChatHelper::FormatItem(item->GetTemplate());
+                out << "无法发送 " << ChatHelper::FormatItem(item->GetTemplate());
                 bot->Whisper(out.str(), LANG_UNIVERSAL, tellTo);
                 continue;
             }
@@ -140,7 +140,7 @@ bool SendMailAction::Execute(Event event)
                 if (!price)
                 {
                     std::ostringstream out;
-                    out << ChatHelper::FormatItem(item->GetTemplate()) << ": it is not for sale";
+                    out << ChatHelper::FormatItem(item->GetTemplate()) << ": 它不出售";
                     bot->Whisper(out.str(), LANG_UNIVERSAL, tellTo);
                     return false;
                 }
@@ -160,7 +160,7 @@ bool SendMailAction::Execute(Event event)
             CharacterDatabase.CommitTransaction(trans);
 
             std::ostringstream out;
-            out << "Sent mail to " << receiver->GetName();
+            out << "邮件发送至 " << receiver->GetName();
             bot->Whisper(out.str(), LANG_UNIVERSAL, tellTo);
             return true;
         }

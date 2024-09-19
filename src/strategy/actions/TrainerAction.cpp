@@ -16,7 +16,7 @@ void TrainerAction::Learn(uint32 cost, TrainerSpell const* tSpell, std::ostrings
     {
         if (AI_VALUE2(uint32, "free money for", (uint32)NeedMoneyFor::spells) < cost)
         {
-            msg << " - too expensive";
+            msg << " - 太贵了";
             return;
         }
 
@@ -41,7 +41,7 @@ void TrainerAction::Learn(uint32 cost, TrainerSpell const* tSpell, std::ostrings
     if (!learned)
         bot->learnSpell(tSpell->spell);
 
-    msg << " - learned";
+    msg << " - 已学习";
 }
 
 void TrainerAction::Iterate(Creature* creature, TrainerSpellAction action, SpellIds& spells)
@@ -109,7 +109,7 @@ bool TrainerAction::Execute(Event event)
 
     if (!creature->IsValidTrainerForPlayer(bot))
     {
-        botAI->TellError("This trainer cannot teach me");
+        botAI->TellError("这个训练师不能教我任何技能。");
         return false;
     }
 
@@ -117,7 +117,7 @@ bool TrainerAction::Execute(Event event)
     TrainerSpellData const* cSpells = creature->GetTrainerSpells();
     if (!cSpells)
     {
-        botAI->TellError("No spells can be learned from this trainer");
+        botAI->TellError("从这个训练师那里无法学习任何法术。");
         return false;
     }
 
@@ -141,7 +141,7 @@ bool TrainerAction::Execute(Event event)
 void TrainerAction::TellHeader(Creature* creature)
 {
     std::ostringstream out;
-    out << "--- Can learn from " << creature->GetName() << " ---";
+    out << "--- 可以从 " << creature->GetName() << " 处学习 ---";
     botAI->TellMaster(out);
 }
 
@@ -150,7 +150,7 @@ void TrainerAction::TellFooter(uint32 totalCost)
     if (totalCost)
     {
         std::ostringstream out;
-        out << "Total cost: " << chat->formatMoney(totalCost);
+        out << "总计费用: " << chat->formatMoney(totalCost);
         botAI->TellMaster(out);
     }
 }
@@ -202,7 +202,7 @@ bool AutoGearAction::Execute(Event event)
         botAI->TellError("autogear command is not allowed, please check the configuration.");
         return false;
     }
-    botAI->TellMaster("I'm auto gearing");
+    botAI->TellMaster("我在自动配装");
     uint32 gs = sPlayerbotAIConfig->autoGearScoreLimit == 0
                     ? 0
                     : PlayerbotFactory::CalcMixedGearScore(sPlayerbotAIConfig->autoGearScoreLimit,

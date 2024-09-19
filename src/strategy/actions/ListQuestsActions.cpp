@@ -10,11 +10,11 @@
 
 bool ListQuestsAction::Execute(Event event)
 {
-    if (event.getParam() == "completed" || event.getParam() == "co")
+    if (event.getParam() == "已完成" || event.getParam() == "co")
     {
         ListQuests(QUEST_LIST_FILTER_COMPLETED);
     }
-    else if (event.getParam() == "incompleted" || event.getParam() == "in")
+    else if (event.getParam() == "未完成" || event.getParam() == "in")
     {
         ListQuests(QUEST_LIST_FILTER_INCOMPLETED);
     }
@@ -44,20 +44,20 @@ void ListQuestsAction::ListQuests(QuestListFilter filter, QuestTravelDetail trav
     bool showCompleted = filter & QUEST_LIST_FILTER_COMPLETED;
 
     if (showIncompleted)
-        botAI->TellMaster("--- Incompleted quests ---");
+        botAI->TellMaster("--- 未完成的任务 ---");
 
     uint32 incompleteCount = ListQuests(false, !showIncompleted, travelDetail);
 
     if (showCompleted)
-        botAI->TellMaster("--- Completed quests ---");
+        botAI->TellMaster("--- 完成的任务 ---");
 
     uint32 completeCount = ListQuests(true, !showCompleted, travelDetail);
 
-    botAI->TellMaster("--- Summary ---");
+    botAI->TellMaster("--- 摘要 ---");
 
     std::ostringstream out;
-    out << "Total: " << (completeCount + incompleteCount) << " / 25 (incompleted: " << incompleteCount
-        << ", completed: " << completeCount << ")";
+    out << "总计: " << (completeCount + incompleteCount) << " / 25 (未完成: " << incompleteCount
+        << ", 已完成: " << completeCount << ")";
     botAI->TellMaster(out);
 }
 

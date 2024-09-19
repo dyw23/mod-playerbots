@@ -139,9 +139,9 @@ bool QuestAction::CompleteQuest(Player* player, uint32 entry)
     if (botAI->HasStrategy("debug quest", BotState::BOT_STATE_NON_COMBAT) || botAI->HasStrategy("debug rpg", BotState::BOT_STATE_COMBAT))
     {
         LOG_INFO("playerbots", "{} => Quest [ {} ] completed", bot->GetName(), pQuest->GetTitle());
-        bot->Say("Quest [ " + text_quest + " ] completed", LANG_UNIVERSAL);
+        bot->Say("任务 [ " + text_quest + " ] 已完成", LANG_UNIVERSAL);
     }
-    botAI->TellMasterNoFacing("Quest completed " + text_quest);
+    botAI->TellMasterNoFacing("已完成任务 " + text_quest);
 
     player->CompleteQuest(entry);
 
@@ -169,7 +169,7 @@ bool QuestAction::ProcessQuests(WorldObject* questGiver)
     {
         //if (botAI->HasStrategy("debug", BotState::BOT_STATE_COMBAT) || botAI->HasStrategy("debug", BotState::BOT_STATE_NON_COMBAT))
 
-        botAI->TellError("Cannot talk to quest giver");
+        botAI->TellError("无法与任务给予者交谈");
         return false;
     }
 

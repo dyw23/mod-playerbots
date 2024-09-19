@@ -329,7 +329,7 @@ std::string const GetHelloText(uint32 owner)
     ObjectGuid ownerGUID = ObjectGuid::Create<HighGuid::Player>(owner);
 
     std::ostringstream body;
-    body << "Hello";
+    body << "你好";
 
     std::string playerName;
     sCharacterCache->GetCharacterNameByGuid(ownerGUID, playerName);

@@ -71,7 +71,7 @@ void CheckMailAction::ProcessMail(Mail* mail, Player* owner, CharacterDatabaseTr
         return;
     }
 
-    if (mail->subject.find("Item(s) you asked for") != std::string::npos)
+    if (mail->subject.find("你要求的物品") != std::string::npos)
         return;
 
     for (MailItemInfoVec::iterator i = mail->items.begin(); i != mail->items.end(); ++i)
@@ -83,14 +83,14 @@ void CheckMailAction::ProcessMail(Mail* mail, Player* owner, CharacterDatabaseTr
         if (!sGuildTaskMgr->CheckItemTask(i->item_template, item->GetCount(), owner, bot, true))
         {
             std::ostringstream body;
-            body << "Hello, " << owner->GetName() << ",\n";
+            body << "你好, " << owner->GetName() << ",\n";
             body << "\n";
-            body << "Here are the item(s) you've sent me by mistake";
+            body << "这是你不小心寄给我的物品";
             body << "\n";
-            body << "Thanks,\n";
+            body << "谢谢,\n";
             body << bot->GetName() << "\n";
 
-            MailDraft draft("Item(s) you've sent me", body.str());
+            MailDraft draft("你寄给我的物品", body.str());
             draft.AddItem(item);
             bot->RemoveMItem(i->item_guid);
             draft.SendMailTo(trans, MailReceiver(owner), MailSender(bot));
