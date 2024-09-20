@@ -564,7 +564,7 @@ void Engine::PushDefaultActions()
 
 std::string const Engine::ListStrategies()
 {
-    std::string s = "策略: ";
+    std::string s = "Strategies: ";
 
     if (strategies.empty())
         return std::move(s);

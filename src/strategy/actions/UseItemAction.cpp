@@ -93,13 +93,13 @@ bool UseItemAction::UseItem(Item* item, ObjectGuid goGuid, Item* itemTarget, Uni
     bool targetSelected = false;
 
     std::ostringstream out;
-    out << "Using " << chat->FormatItem(item->GetTemplate());
+    out << "使用 " << chat->FormatItem(item->GetTemplate());
 
     if (item->GetTemplate()->Stackable > 1)
     {
         uint32 count = item->GetCount();
         if (count > 1)
-            out << " (" << count << " available) ";
+            out << " (" << count << " 可用的) ";
         else
             out << " (the last one!)";
     }
@@ -240,7 +240,7 @@ bool UseItemAction::UseItem(Item* item, ObjectGuid goGuid, Item* itemTarget, Uni
         packet << targetFlag;
         packet << bot->GetPackGUID();
         targetSelected = true;
-        out << " on self";
+        out << " 对自己";
     }
 
     ItemTemplate const* proto = item->GetTemplate();
