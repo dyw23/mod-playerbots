@@ -59,14 +59,14 @@ public:
 bool SellAction::Execute(Event event)
 {
     std::string const text = event.getParam();
-    if (text == "gray" || text == "*")
+    if (text == "灰色" || text == "*")
     {
         SellGrayItemsVisitor visitor(this);
         IterateItems(&visitor);
         return true;
     }
 
-    if (text == "vendor")
+    if (text == "商人")
     {
         SellVendorItemsVisitor visitor(this, context);
         IterateItems(&visitor);
@@ -123,7 +123,7 @@ void SellAction::Sell(Item* item)
             bot->SetMoney(botMoney);
         }
 
-        out << "Selling " << chat->FormatItem(item->GetTemplate());
+        out << "卖出 " << chat->FormatItem(item->GetTemplate());
         botAI->TellMaster(out);
 
         bot->PlayDistanceSound(120);

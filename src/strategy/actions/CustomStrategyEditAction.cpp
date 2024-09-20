@@ -31,7 +31,7 @@ bool CustomStrategyEditAction::Execute(Event event)
 
 bool CustomStrategyEditAction::PrintHelp()
 {
-    botAI->TellMaster("=== Custom strategies ===");
+    botAI->TellMaster("=== 个性化策略 ===");
 
     uint32 owner = botAI->GetBot()->GetGUID().GetCounter();
 

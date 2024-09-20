@@ -124,15 +124,15 @@ bool FleeToMasterAction::Execute(Event event)
     if (distance < sPlayerbotAIConfig->reactDistance * 3)
     {
         if (!urand(0, 3))
-            botAI->TellMaster("I am close, wait for me!");
+            botAI->TellMaster("我快到了，等我一下!");
     }
     else if (distance < 1000)
     {
         if (!urand(0, 10))
-            botAI->TellMaster("I heading to your position.");
+            botAI->TellMaster("我正在前往你的位置。");
     }
     else if (!urand(0, 20))
-        botAI->TellMaster("I am traveling to your position.");
+        botAI->TellMaster("我正在前往你的位置。");
 
     botAI->SetNextCheckDelay(3000);
 

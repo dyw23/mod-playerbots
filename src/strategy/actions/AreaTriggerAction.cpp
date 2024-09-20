@@ -36,7 +36,7 @@ bool ReachAreaTriggerAction::Execute(Event event)
 
     if (bot->GetMapId() != at->map)
     {
-        botAI->TellError("I won't follow: too far away");
+        botAI->TellError("我跟不上你：太远了");
         return true;
     }
 
@@ -44,7 +44,7 @@ bool ReachAreaTriggerAction::Execute(Event event)
 
     float distance = bot->GetDistance(at->x, at->y, at->z);
     float delay = 1000.0f * distance / bot->GetSpeed(MOVE_RUN) + sPlayerbotAIConfig->reactDelay;
-    botAI->TellError("Wait for me");
+    botAI->TellError("等等我");
     botAI->SetNextCheckDelay(delay);
     context->GetValue<LastMovement&>("last area trigger")->Get().lastAreaTrigger = triggerId;
 

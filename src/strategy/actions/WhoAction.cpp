@@ -78,7 +78,7 @@ std::string const WhoAction::QueryTrade(std::string const text)
         if (!sellPrice)
             continue;
 
-        out << "Selling " << chat->FormatItem(sell->GetTemplate(), sell->GetCount()) << " for "
+        out << "卖出 " << chat->FormatItem(sell->GetTemplate(), sell->GetCount()) << " for "
             << chat->formatMoney(sellPrice);
         return out.str();
     }
