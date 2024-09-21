@@ -266,7 +266,7 @@ std::vector<std::pair<uint32, std::string>> ListSpellsAction::GetSpellList(std::
             else if (SkillValue >= YellowLevel)
                 out << " |cffffff00黄色";
             else
-                out << " |cffff8040橙色";
+                out << " |cffff8040红色";
 
             out << "|r";
         }

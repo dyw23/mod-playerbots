@@ -296,7 +296,7 @@ bool TurnInQueryQuestAction::Execute(Event event)
         out << "|cffff0000失败的|r";
         break;
     case QUEST_STATUS_REWARDED:
-        out << "|cffff0000得到奖励的|r";
+        out << "|cffff0000获得奖励的|r";
         break;
     default:
         break;

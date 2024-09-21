@@ -67,7 +67,7 @@ void BuffAction::TellHeader(uint32 subClass)
             botAI->TellMaster("--- 药剂 ---");
             return;
         case ITEM_SUBCLASS_FLASK:
-            botAI->TellMaster("--- 药瓶 ---");
+            botAI->TellMaster("--- 药水 ---");
             return;
         case ITEM_SUBCLASS_SCROLL:
             botAI->TellMaster("--- 卷轴 ---");

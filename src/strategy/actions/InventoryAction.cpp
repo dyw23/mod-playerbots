@@ -139,7 +139,7 @@ void InventoryAction::TellItems(std::map<uint32, uint32> itemMap, std::map<uint3
                     botAI->TellMaster("--- 武器 ---");
                     break;
                 case ITEM_CLASS_ARMOR:
-                    botAI->TellMaster("--- 护甲 ---");
+                    botAI->TellMaster("--- 装备 ---");
                     break;
                 case ITEM_CLASS_REAGENT:
                     botAI->TellMaster("--- 药剂 ---");
