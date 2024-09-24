@@ -16,7 +16,7 @@ bool ReleaseSpiritAction::Execute(Event event)
 {
     if (bot->IsAlive())
     {
-        botAI->TellMasterNoFacing("I am not dead, will wait here");
+        botAI->TellMasterNoFacing("我还没死，会在这里等你");
         botAI->ChangeStrategy("-follow,+stay", BOT_STATE_NON_COMBAT);
         return false;
     }
