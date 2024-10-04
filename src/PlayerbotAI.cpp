@@ -43,6 +43,7 @@
 #include "SharedDefines.h"
 #include "SocialMgr.h"
 #include "SpellAuraEffects.h"
+#include "SpellInfo.h"
 #include "Transport.h"
 #include "Unit.h"
 #include "UpdateTime.h"
@@ -318,12 +319,43 @@ void PlayerbotAI::UpdateAI(uint32 elapsed, bool minimal)
         currentSpell = bot->GetCurrentSpell(CURRENT_CHANNELED_SPELL);
     if (currentSpell && currentSpell->getState() == SPELL_STATE_PREPARING)
     {
+        const SpellInfo* spellInfo = currentSpell->GetSpellInfo();
+        
+        // interrupt if target is dead
         if (currentSpell->m_targets.GetUnitTarget() && !currentSpell->m_targets.GetUnitTarget()->IsAlive() &&
-            currentSpell->GetSpellInfo() && !currentSpell->GetSpellInfo()->IsAllowingDeadTarget())
+            spellInfo && !spellInfo->IsAllowingDeadTarget())
         {
-            bot->InterruptSpell(CURRENT_GENERIC_SPELL);
+            InterruptSpell();
             SetNextCheckDelay(sPlayerbotAIConfig->reactDelay);
         }
+
+        bool isHeal = false;
+        bool isSingleTarget = true;
+
+        for (uint8 i = 0; i < 3; ++i)
+        {
+            if (!spellInfo->Effects[i].Effect)
+                continue;
+
+            if (spellInfo->Effects[i].Effect == SPELL_EFFECT_HEAL ||
+                spellInfo->Effects[i].Effect == SPELL_EFFECT_HEAL_MAX_HEALTH ||
+                spellInfo->Effects[i].Effect == SPELL_EFFECT_HEAL_MECHANICAL)
+                isHeal = true;
+            
+            if ((spellInfo->Effects[i].TargetA.GetTarget() && spellInfo->Effects[i].TargetA.GetTarget() != TARGET_UNIT_TARGET_ALLY) || 
+                (spellInfo->Effects[i].TargetB.GetTarget() && spellInfo->Effects[i].TargetB.GetTarget() != TARGET_UNIT_TARGET_ALLY))
+            {
+                isSingleTarget = false;
+            }
+        }
+        // interrupt if target ally has full health (heal by other member)
+        if (isHeal && isSingleTarget && currentSpell->m_targets.GetUnitTarget() && currentSpell->m_targets.GetUnitTarget()->IsFullHealth())
+        {
+            InterruptSpell();
+            SetNextCheckDelay(sPlayerbotAIConfig->reactDelay);
+        }
+
+        // wait for spell cast
         return;
     }
 
@@ -355,15 +387,18 @@ void PlayerbotAI::UpdateAI(uint32 elapsed, bool minimal)
         return;
 
     if (!bot->InBattleground() && !bot->inRandomLfgDungeon() && bot->GetGroup())
-    {
-        Player* leader = bot->GetGroup()->GetLeader();
-        PlayerbotAI* leaderAI = GET_PLAYERBOT_AI(leader);
-        if (leaderAI && !leaderAI->IsRealPlayer())
-        {
-            bot->RemoveFromGroup();
-            ResetStrategies();
-        }
-    }
+	{
+		Player* leader = bot->GetGroup()->GetLeader();
+		if (leader && leader != bot) // Checks if the leader is valid and is not the bot itself
+		{
+			PlayerbotAI* leaderAI = GET_PLAYERBOT_AI(leader);
+			if (leaderAI && !leaderAI->IsRealPlayer())
+			{
+				bot->RemoveFromGroup();
+				ResetStrategies();
+			}
+		}
+	}
 
     bool min = minimal;
     UpdateAIInternal(elapsed, min);
@@ -3733,13 +3768,10 @@ void PlayerbotAI::WaitForSpellCast(Spell* spell)
 
 void PlayerbotAI::InterruptSpell()
 {
-    for (uint8 type = CURRENT_MELEE_SPELL; type < CURRENT_CHANNELED_SPELL; type++)
+    for (uint8 type = CURRENT_MELEE_SPELL; type <= CURRENT_CHANNELED_SPELL; type++)
     {
         Spell* spell = bot->GetCurrentSpell((CurrentSpellTypes)type);
         if (!spell)
-            continue;
-
-        if (spell->m_spellInfo->IsPositive())
             continue;
 
         bot->InterruptSpell((CurrentSpellTypes)type);
@@ -4063,8 +4095,6 @@ bool PlayerbotAI::AllowActive(ActivityType activityType)
             return true;
     }
 
-    uint32 maxDiff = sWorldUpdateTime.GetMaxUpdateTime();
-
     Group* group = bot->GetGroup();
     if (group)
     {
@@ -4144,37 +4174,10 @@ bool PlayerbotAI::AllowActive(ActivityType activityType)
     if (sPlayerbotAIConfig->botActiveAlone <= 0)
         return false;
 
-    if (sPlayerbotAIConfig->botActiveAlone >= 100)
-        return true;
-
-    if (maxDiff > 1000)
-        return false;
-
-    uint32 mod = 100;
-
-    // if has real players - slow down continents without player
-    if (maxDiff > 100)
-        mod = 50;
-
-    if (maxDiff > 150)
-        mod = 25;
-
-    if (maxDiff > 200)
-        mod = 10;
-
-    if (maxDiff > 250)
+    uint32 mod = sPlayerbotAIConfig->botActiveAlone > 100 ? 100 : sPlayerbotAIConfig->botActiveAlone;
+    if (sPlayerbotAIConfig->botActiveAloneAutoScale) 
     {
-        if (Map* map = bot->GetMap())
-        {
-            if (map->GetEntry()->IsWorldMap())
-            {
-                if (!HasRealPlayers(map))
-                    return false;
-
-                if (!map->IsGridLoaded(bot->GetPositionX(), bot->GetPositionY()))
-                    return false;
-            }
-        }
+        mod = AutoScaleActivity(mod);
     }
 
     uint32 ActivityNumber =
@@ -4198,6 +4201,31 @@ bool PlayerbotAI::AllowActivity(ActivityType activityType, bool checkNow)
     allowActive[activityType] = allowed;
     allowActiveCheckTimer[activityType] = time(nullptr);
     return allowed;
+}
+
+uint32 PlayerbotAI::AutoScaleActivity(uint32 mod)
+{
+    uint32 maxDiff = sWorldUpdateTime.GetAverageUpdateTime();
+    
+    if (maxDiff > 500) return 0;
+    if (maxDiff > 250)
+    {
+        if (Map* map = bot->GetMap())
+        {
+            if (map->GetEntry()->IsWorldMap() && 
+                (!HasRealPlayers(map) || 
+                !map->IsGridLoaded(bot->GetPositionX(), bot->GetPositionY())))
+                return 0;
+        }
+
+        return (mod * 1) / 10;
+    }
+    if (maxDiff > 200) return (mod * 3) / 10;
+    if (maxDiff > 150) return (mod * 5) / 10;
+    if (maxDiff > 100) return (mod * 6) / 10;
+    if (maxDiff > 80)  return (mod * 9) / 10;
+
+    return mod;
 }
 
 bool PlayerbotAI::IsOpposing(Player* player) { return IsOpposing(player->getRace(), bot->getRace()); }
