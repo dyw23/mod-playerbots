@@ -141,7 +141,7 @@ bool TrainerAction::Execute(Event event)
 void TrainerAction::TellHeader(Creature* creature)
 {
     std::ostringstream out;
-    out << "--- 可以从 " << creature->GetName() << " 处学习 ---";
+    out << "--- 可以从 " << creature->GetName() << " 处学到技能 ---";
     botAI->TellMaster(out);
 }
 

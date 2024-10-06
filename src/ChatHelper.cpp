@@ -119,54 +119,54 @@ ChatHelper::ChatHelper(PlayerbotAI* botAI) : PlayerbotAIAware(botAI)
     chats["w"] = CHAT_MSG_WHISPER;
 
     classes[CLASS_DRUID] = "德鲁伊";
-    specs[CLASS_DRUID][0] = "平衡";
-    specs[CLASS_DRUID][1] = "野性战斗";
-    specs[CLASS_DRUID][2] = "恢复";
+    specs[CLASS_DRUID][0] = "平衡天赋";
+    specs[CLASS_DRUID][1] = "野性战斗天赋";
+    specs[CLASS_DRUID][2] = "恢复天赋";
 
     classes[CLASS_HUNTER] = "猎人";
-    specs[CLASS_HUNTER][0] = "野兽控制";
-    specs[CLASS_HUNTER][1] = "射击";
-    specs[CLASS_HUNTER][2] = "生存";
+    specs[CLASS_HUNTER][0] = "野兽控制天赋";
+    specs[CLASS_HUNTER][1] = "射击天赋";
+    specs[CLASS_HUNTER][2] = "生存天赋";
 
     classes[CLASS_MAGE] = "法师";
-    specs[CLASS_MAGE][0] = "奥术";
-    specs[CLASS_MAGE][1] = "火焰";
-    specs[CLASS_MAGE][2] = "冰霜";
+    specs[CLASS_MAGE][0] = "奥术天赋";
+    specs[CLASS_MAGE][1] = "火焰天赋";
+    specs[CLASS_MAGE][2] = "冰霜天赋";
 
     classes[CLASS_PALADIN] = "圣骑士";
-    specs[CLASS_PALADIN][0] = "神圣";
-    specs[CLASS_PALADIN][1] = "防护";
-    specs[CLASS_PALADIN][2] = "惩戒";
+    specs[CLASS_PALADIN][0] = "神圣天赋";
+    specs[CLASS_PALADIN][1] = "防护天赋";
+    specs[CLASS_PALADIN][2] = "惩戒天赋";
 
     classes[CLASS_PRIEST] = "牧师";
-    specs[CLASS_PRIEST][0] = "戒律";
-    specs[CLASS_PRIEST][1] = "神圣";
-    specs[CLASS_PRIEST][2] = "暗影";
+    specs[CLASS_PRIEST][0] = "戒律天赋";
+    specs[CLASS_PRIEST][1] = "神圣天赋";
+    specs[CLASS_PRIEST][2] = "暗影天赋";
 
     classes[CLASS_ROGUE] = "盗贼";
-    specs[CLASS_ROGUE][0] = "刺杀";
-    specs[CLASS_ROGUE][1] = "战斗";
-    specs[CLASS_ROGUE][2] = "敏锐";
+    specs[CLASS_ROGUE][0] = "刺杀天赋";
+    specs[CLASS_ROGUE][1] = "战斗天赋";
+    specs[CLASS_ROGUE][2] = "敏锐天赋";
 
     classes[CLASS_SHAMAN] = "萨满";
-    specs[CLASS_SHAMAN][0] = "元素";
-    specs[CLASS_SHAMAN][1] = "增强";
-    specs[CLASS_SHAMAN][2] = "恢复";
+    specs[CLASS_SHAMAN][0] = "元素天赋";
+    specs[CLASS_SHAMAN][1] = "增强天赋";
+    specs[CLASS_SHAMAN][2] = "恢复天赋";
 
     classes[CLASS_WARLOCK] = "术士";
-    specs[CLASS_WARLOCK][0] = "痛苦";
-    specs[CLASS_WARLOCK][1] = "恶魔学识";
-    specs[CLASS_WARLOCK][2] = "毁灭";
+    specs[CLASS_WARLOCK][0] = "痛苦天赋";
+    specs[CLASS_WARLOCK][1] = "恶魔学识天赋";
+    specs[CLASS_WARLOCK][2] = "毁灭天赋";
 
     classes[CLASS_WARRIOR] = "战士";
-    specs[CLASS_WARRIOR][0] = "武器";
-    specs[CLASS_WARRIOR][1] = "狂暴";
-    specs[CLASS_WARRIOR][2] = "防护";
+    specs[CLASS_WARRIOR][0] = "武器天赋";
+    specs[CLASS_WARRIOR][1] = "狂暴天赋";
+    specs[CLASS_WARRIOR][2] = "防护天赋";
 
     classes[CLASS_DEATH_KNIGHT] = "死亡骑士";
-    specs[CLASS_DEATH_KNIGHT][0] = "鲜血";
-    specs[CLASS_DEATH_KNIGHT][1] = "冰霜";
-    specs[CLASS_DEATH_KNIGHT][2] = "邪恶";
+    specs[CLASS_DEATH_KNIGHT][0] = "鲜血天赋";
+    specs[CLASS_DEATH_KNIGHT][1] = "冰霜天赋";
+    specs[CLASS_DEATH_KNIGHT][2] = "邪恶天赋";
 
     races[RACE_DWARF] = "矮人";
     races[RACE_GNOME] = "侏儒";

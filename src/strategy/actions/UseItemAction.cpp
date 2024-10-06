@@ -101,7 +101,7 @@ bool UseItemAction::UseItem(Item* item, ObjectGuid goGuid, Item* itemTarget, Uni
         if (count > 1)
             out << " (" << count << " 可用的) ";
         else
-            out << " (the last one!)";
+            out << " (最后一个!)";
     }
 
     if (goGuid)
@@ -114,7 +114,7 @@ bool UseItemAction::UseItem(Item* item, ObjectGuid goGuid, Item* itemTarget, Uni
 
         packet << targetFlag;
         packet << goGuid.WriteAsPacked();
-        out << " on " << chat->FormatGameobject(go);
+        out << " 为 " << chat->FormatGameobject(go);
         targetSelected = true;
     }
 
@@ -174,7 +174,7 @@ bool UseItemAction::UseItem(Item* item, ObjectGuid goGuid, Item* itemTarget, Uni
             bot->GetSession()->HandleQuestgiverAcceptQuestOpcode(packet);
 
             std::ostringstream out;
-            out << "Got quest " << chat->FormatQuest(qInfo);
+            out << "接到任务 " << chat->FormatQuest(qInfo);
             botAI->TellMasterNoFacing(out.str());
             return true;
         }

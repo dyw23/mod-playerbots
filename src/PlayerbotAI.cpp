@@ -1552,70 +1552,70 @@ void PlayerbotAI::ApplyInstanceStrategies(uint32 mapId, bool tellMaster)
     switch (mapId)
     {
         case 409:
-            strategyName = "mc";
+            strategyName = "熔火之心";
             break;
         case 469:
-            strategyName = "bwl";
+            strategyName = "黑翼之巢";
             break;
         case 509:
-            strategyName = "aq20";
+            strategyName = "安其拉废墟";
             break;
         case 533:
-            strategyName = "naxx";
+            strategyName = "纳克萨玛斯";
             break;
         case 574:
-            strategyName = "wotlk-uk";      // Utgarde Keep
+            strategyName = "乌特加德城堡";      // Utgarde Keep
             break;
         case 575:
-            strategyName = "wotlk-up";      // Utgarde Pinnacle
+            strategyName = "乌特加德之巅";      // Utgarde Pinnacle
             break;
         case 576:
-            strategyName = "wotlk-nex";     // The Nexus
+            strategyName = "魔枢";     // The Nexus
             break;
         case 578:
-            strategyName = "wotlk-occ";     // The Oculus
+            strategyName = "魔环";     // The Oculus
             break;
         case 595:
-            strategyName = "wotlk-cos";     // The Culling of Stratholme
+            strategyName = "净化斯坦索姆";     // The Culling of Stratholme
             break;
         case 599:
-            strategyName = "wotlk-hos";     // Halls of Stone
+            strategyName = "岩石大厅";     // Halls of Stone
             break;
         case 600:
-            strategyName = "wotlk-dtk";     // Drak'Tharon Keep
+            strategyName = "达克萨隆要塞";     // Drak'Tharon Keep
             break;
         case 601:
-            strategyName = "wotlk-an";      // Azjol-Nerub
+            strategyName = "艾卓-尼鲁布";      // Azjol-Nerub
             break;
         case 602:
-            strategyName = "wotlk-hol";     // Halls of Lightning
+            strategyName = "闪电大厅";     // Halls of Lightning
             break;
         case 603:
-            strategyName = "uld";
+            strategyName = "奥杜尔";
             break;
         case 604:
-            strategyName = "wotlk-gd";      // Gundrak
+            strategyName = "古达克";      // Gundrak
             break;
         case 608:
-            strategyName = "wotlk-vh";      // Violet Hold
+            strategyName = "紫罗兰监狱";      // Violet Hold
             break;
         case 619:
-            strategyName = "wotlk-ok";      // Ahn'kahet: The Old Kingdom
+            strategyName = "安卡赫特：古代王国";      // Ahn'kahet: The Old Kingdom
             break;
         case 631:
-            strategyName = "icc";
+            strategyName = "冰冠堡垒";
             break;
         case 632:
-            strategyName = "wotlk-fos";     // The Forge of Souls
+            strategyName = "灵魂洪炉";     // The Forge of Souls
             break;
         case 650:
-            strategyName = "wotlk-toc";     // Trial of the Champion
+            strategyName = "冠军的试炼";     // Trial of the Champion
             break;
         case 658:
-            strategyName = "wotlk-pos";     // Pit of Saron
+            strategyName = "萨隆矿坑";     // Pit of Saron
             break;
         case 668:
-            strategyName = "wotlk-hor";     // Halls of Reflection
+            strategyName = "映像大厅";     // Halls of Reflection
             break;
         default:
             break;
@@ -1627,7 +1627,7 @@ void PlayerbotAI::ApplyInstanceStrategies(uint32 mapId, bool tellMaster)
     if (tellMaster && !strategyName.empty())
     {
         std::ostringstream out;
-        out << "Add " << strategyName << " instance strategy";
+        out << "添加 " << strategyName << " 副本策略";
         TellMasterNoFacing(out.str());
     }
 }
