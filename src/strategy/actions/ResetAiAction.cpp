@@ -46,6 +46,6 @@ bool ResetAiAction::Execute(Event event)
     }
     sPlayerbotDbStore->Reset(botAI);
     botAI->ResetStrategies(false);
-    botAI->TellMaster("AI was reset to defaults");
+    botAI->TellMaster("AI被重置为默认设置。");
     return true;
 }
