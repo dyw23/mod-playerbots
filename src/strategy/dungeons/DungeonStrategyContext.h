@@ -6,13 +6,12 @@
 #include "wotlk/nexus/NexusStrategy.h"
 #include "wotlk/azjolnerub/AzjolNerubStrategy.h"
 #include "wotlk/oldkingdom/OldKingdomStrategy.h"
+#include "wotlk/draktharonkeep/DrakTharonKeepStrategy.h"
+#include "wotlk/violethold/VioletHoldStrategy.h"
 
 /*
 Full list/TODO:
-Drak'Tharon Keep - DTK
-Trollgore, Novos the Summoner, King Dred, The Prophet Tharon'ja
-The Violet Hold - VH
-Erekem, Moragg, Ichoron, Xevozz, Lavanthor, Zuramat the Obliterator, Cyanigosa
+
 Gundrak - GD
 Slad'ran, Drakkari Colossus, Moorabi, Gal'darah, Eck the Ferocious (Heroic only)
 Halls of Stone - HoS
@@ -75,9 +74,9 @@ class DungeonStrategyContext : public NamedObjectContext<Strategy>
         static Strategy* wotlk_nex(PlayerbotAI* botAI) { return new WotlkDungeonNexStrategy(botAI); }
         static Strategy* wotlk_an(PlayerbotAI* botAI) { return new WotlkDungeonANStrategy(botAI); }
         static Strategy* wotlk_ok(PlayerbotAI* botAI) { return new WotlkDungeonOKStrategy(botAI); }
+        static Strategy* wotlk_dtk(PlayerbotAI* botAI) { return new WotlkDungeonDTKStrategy(botAI); }
+        static Strategy* wotlk_vh(PlayerbotAI* botAI) { return new WotlkDungeonVHStrategy(botAI); }
 
-        static Strategy* wotlk_dtk(PlayerbotAI* botAI) { return new WotlkDungeonUKStrategy(botAI); }
-        static Strategy* wotlk_vh(PlayerbotAI* botAI) { return new WotlkDungeonUKStrategy(botAI); }
         static Strategy* wotlk_gd(PlayerbotAI* botAI) { return new WotlkDungeonUKStrategy(botAI); }
         static Strategy* wotlk_hos(PlayerbotAI* botAI) { return new WotlkDungeonUKStrategy(botAI); }
         static Strategy* wotlk_hol(PlayerbotAI* botAI) { return new WotlkDungeonUKStrategy(botAI); }
