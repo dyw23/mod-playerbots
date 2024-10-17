@@ -34,7 +34,7 @@ bool UseMeetingStoneAction::Execute(Event event)
 
     if (bot->IsInCombat())
     {
-        botAI->TellError("I am in combat");
+        botAI->TellError("我正在战斗中");
         return false;
     }
 
@@ -117,7 +117,7 @@ bool SummonAction::SummonUsingGos(Player* summoner, Player* player)
             return Teleport(summoner, player);
     }
 
-    botAI->TellError(summoner == bot ? "There is no meeting stone nearby" : "There is no meeting stone near you");
+    botAI->TellError(summoner == bot ? "附近没有集合石" : "你附近没有集合石");
     return false;
 }
 
@@ -137,13 +137,13 @@ bool SummonAction::SummonUsingNpcs(Player* summoner, Player* player)
         {
             if (!player->HasItemCount(6948, 1, false))
             {
-                botAI->TellError(player == bot ? "I have no hearthstone" : "You have no hearthstone");
+                botAI->TellError(player == bot ? "我没有炉石" : "你没有炉石");
                 return false;
             }
 
             if (player->HasSpellCooldown(8690))
             {
-                botAI->TellError(player == bot ? "My hearthstone is not ready" : "Your hearthstone is not ready");
+                botAI->TellError(player == bot ? "我的炉石还没准备好" : "你的炉石还没准备好");
                 return false;
             }
 
@@ -159,7 +159,7 @@ bool SummonAction::SummonUsingNpcs(Player* summoner, Player* player)
         }
     }
 
-    botAI->TellError(summoner == bot ? "There are no innkeepers nearby" : "There are no innkeepers near you");
+    botAI->TellError(summoner == bot ? "附近没有旅店老板" : "你附近没有旅店老板");
     return false;
 }
 
@@ -171,7 +171,7 @@ bool SummonAction::Teleport(Player* summoner, Player* player)
     
     if (player->GetVehicle())
     {
-        botAI->TellError("You cannot summon me while I'm on a vehicle");
+        botAI->TellError("你不能在我乘坐交通工具时召唤我");
         return false;
     }
 
@@ -193,20 +193,20 @@ bool SummonAction::Teleport(Player* summoner, Player* player)
 
                 if (summoner->IsInCombat() && !sPlayerbotAIConfig->allowSummonInCombat)
                 {
-                    botAI->TellError("You cannot summon me while you're in combat");
+                    botAI->TellError("你在战斗中不能召唤我");
                     return false;
                 }
 
                 if (!summoner->IsAlive() && !sPlayerbotAIConfig->allowSummonWhenMasterIsDead)
                 {
-                    botAI->TellError("You cannot summon me while you're dead");
+                    botAI->TellError("你在死亡时不能召唤我");
                     return false;
                 }
 
                 if (bot->isDead() && !bot->HasPlayerFlag(PLAYER_FLAGS_GHOST) &&
                     !sPlayerbotAIConfig->allowSummonWhenBotIsDead)
                 {
-                    botAI->TellError("You cannot summon me while I'm dead, you need to release my spirit first");
+                    botAI->TellError("在我死亡的时候你不能召唤我，你需要先释放我的灵魂");
                     return false;
                 }
 
@@ -229,6 +229,6 @@ bool SummonAction::Teleport(Player* summoner, Player* player)
         }
     }
 
-    botAI->TellError("Not enough place to summon");
+    botAI->TellError("没有足够的空间来召唤");
     return false;
 }
