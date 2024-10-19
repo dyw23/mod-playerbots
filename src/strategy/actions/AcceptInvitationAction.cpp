@@ -50,7 +50,7 @@ bool AcceptInvitationAction::Execute(Event event)
     botAI->ChangeStrategy("+follow,-lfg,-bg", BOT_STATE_NON_COMBAT);
     botAI->Reset();
 
-    botAI->TellMaster("Hello");
+    botAI->TellMaster("你好");
 
     if (sPlayerbotAIConfig->summonWhenGroup && bot->GetDistance(inviter) > sPlayerbotAIConfig->sightDistance)
     {

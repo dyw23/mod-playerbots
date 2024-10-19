@@ -69,13 +69,13 @@ bool ChangeTalentsAction::Execute(Event event)
         }
         else
         {
-            out << "Unknown command.";
+            out << "未知命令.";
         }
     }
     else
     {
         uint32 tab = AiFactory::GetPlayerSpecTab(bot);
-        out << "My current talent spec is: "
+        out << "我当前的天赋专精是: "
             << "|h|cffffffff";
         out << chat->FormatClass(bot, tab) << "\n";
         out << TalentsHelp();
